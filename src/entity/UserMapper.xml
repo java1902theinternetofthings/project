@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace = "user">
+  
+  	<!-- <insert id="insertMessages" parameterType="java.util.List" >
+  		insert into test_three (id,username,password,sex,age)
+         SELECT SEQ_test_three_id.NEXTVAL,a.* FROM (
+        <foreach collection="list" item="item" open = "(" close = ")" separator="union all">
+	        select
+	            #{item.username},
+	            #{item.password},
+	            #{item.sex},
+	            #{item.age}
+            from dual
+        </foreach>
+        ) a
+    </insert> -->
+    
+    <select id = "allmessages" parameterType="int" resultType = "u1">
+    	select id,username from test_three
+    		<foreach collection="list" item="item"  open="("  close=")" separator=",">
+				#{item}
+			</foreach>
+    </select>
+    
+  	<!-- <resultMap id = "xw" type = "u1">
+  		<id column="id" property="id"/>
+  		<result column="username" property="username"/>
+  	</resultMap> -->
+    
+  </mapper>
